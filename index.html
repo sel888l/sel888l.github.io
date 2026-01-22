@@ -1,376 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,
-initial-scale=1.0">
-<title>PREMIUM EDIBLES | Menú Interactivo</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/al
-l.min.css" rel="stylesheet">
-<link
-href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800
-&display=swap" rel="stylesheet">
-<style>
-/* Estilos Base y Animaciones */
-body {
-font-family: 'Outfit'
-, sans-serif;
-background-color: #000;
-background-image:
-radial-gradient(circle at 15% 50%, rgba(76, 29, 149,
-0.4), transparent 25%),
-radial-gradient(circle at 85% 30%, rgba(16, 185, 129,
-0.25), transparent 25%);
-color: white;
--webkit-font-smoothing: antialiased;
-}
-/* Glassmorphism Cards */
-.glass-panel {
-background: rgba(255, 255, 255, 0.05);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border: 1px solid rgba(255, 255, 255, 0.1);
-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-}
-.product-card {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-.product-card:hover {
-transform: translateY(-5px);
-border-color: rgba(255, 255, 255, 0.3);
-}
-/* Modal Animation */
-.modal {
-transition: opacity 0.3s ease-in-out, visibility 0.3s
-ease-in-out;
-}
-.modal-content {
-transform: scale(0.9);
-transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64,
-1);
-}
-}
-.modal.active .modal-content {
-transform: scale(1);
-/* Botón animado */
-.btn-glow {
-position: relative;
-overflow: hidden;
-transition: all 0.3s;
-}
-.btn-glow:hover {
-box-shadow: 0 0 20px rgba(255,255,255,0.3);
-transform: scale(1.02);
-}
-/* Floating Emojis */
-@keyframes float {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-8px); }
-.animate-float {
-animation: float 4s ease-in-out infinite;
-}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PREMIUM EDIBLES | Menú Interactivo</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: radial-gradient(circle at 15% 50%, rgba(0,255,180,0.25), transparent 25%),
+                  radial-gradient(circle at 85% 30%, rgba(0,120,255,0.25), transparent 25%),
+                  #000;
+      color: white;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 1rem;
+    }
+  </style>
 </head>
-<body class="min-h-screen relative overflow-x-hidden pb-20">
-<!-- Header / Nav -->
-<header class="fixed top-0 w-full z-40 glass-panel border-none
-border-b border-white/5 px-6 py-4 flex justify-between items-center
-bg-black/60">
-<div class="flex items-center gap-2">
-<div class="w-3 h-3 rounded-full bg-green-500
-animate-pulse"></div>
-<span class="font-bold tracking-widest text-sm
-uppercase">Edibles Menu</span>
-</div>
-<div class="text-xs font-light opacity-70">Stock
-Actualizado</div>
-</header>
-<!-- Main Content -->
-<main class="container mx-auto px-4 pt-28 max-w-5xl">
-<!-- Intro -->
-<div class="text-center mb-12 animate-float">
-<h1 class="text-5xl md:text-7xl font-extrabold mb-2
-bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200
-to-gray-500">
-PREMIUM
-</h1>
-<p class="text-lg text-gray-400 tracking-[0.3em]
-uppercase">Selection</p>
-</div>
-<!-- Grid de Productos -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-gap-6">
-<!-- California Leaf -->
-<div class="product-card glass-panel rounded-2xl p-6 flex
-flex-col items-center text-center relative overflow-hidden group">
-<div class="absolute top-0 w-full h-1
-bg-green-500"></div>
-<span class="absolute top-3 right-3 text-[10px]
-font-bold bg-red-500/20 text-red-300 px-2 py-1 rounded border
-border-red-500/30">🔥 8 pz RESTANTES</span>
-<div class="text-6xl mb-4 mt-4
-drop-shadow-lg">🍃</div>
-<h3 class="text-2xl font-bold mb-1">California
-Leaf</h3>
-<p class="text-green-400 text-sm font-semibold
-mb-4">50mg THC • Sativa</p>
-<div class="w-full space-y-2 mb-6 bg-black/20 p-3
-rounded-lg">
-<div class="flex justify-between text-sm"><span
-class="text-gray-400">1 Pieza</span> <span
-class="font-bold">$100</span></div>
-<div class="flex justify-between text-sm"><span
-class="text-green-300">Promo 2 pz</span> <span class="font-bold
-text-green-300">$180</span></div>
-</div>
-<button onclick="openModal('California Leaf')"
-class="btn-glow w-full py-3 bg-white text-black font-bold rounded-lg
-hover:bg-gray-100">
-COMPRAR AHORA
-</button>
-</div>
-<!-- Stoner Paradise -->
-<div class="product-card glass-panel rounded-2xl p-6 flex
-flex-col items-center text-center relative overflow-hidden group">
-<div class="absolute top-0 w-full h-1
-bg-teal-500"></div>
-<div class="text-6xl mb-4 mt-4
-drop-shadow-lg">🦚</div>
-<h3 class="text-2xl font-bold mb-1">Stoner
-Paradise</h3>
-<p class="text-teal-400 text-sm font-semibold
-mb-4">40mg THC</p>
-<div class="w-full space-y-2 mb-6 bg-black/20 p-3
-rounded-lg">
-<div class="flex justify-between text-sm"><span
-class="text-gray-400">1 Pieza</span> <span
-class="font-bold">$100</span></div>
-<div class="flex justify-between text-sm"><span
-class="text-teal-300">Promo 2 pz</span> <span class="font-bold
-text-teal-300">$180</span></div>
-</div>
-<button onclick="openModal('Stoner Paradise')"
-class="btn-glow w-full py-3 bg-white text-black font-bold rounded-lg
-hover:bg-gray-100">
-COMPRAR AHORA
-</button>
-</div>
-<!-- Ghost -->
-<div class="product-card glass-panel rounded-2xl p-6 flex
-flex-col items-center text-center relative overflow-hidden group">
-<div class="absolute top-0 w-full h-1
-bg-gray-400"></div>
-<span class="absolute top-3 right-3 text-[10px]
-font-bold bg-white/10 text-white px-2 py-1 rounded border
-border-white/20">10 pz STOCK</span>
-<div class="text-6xl mb-4 mt-4
-drop-shadow-lg">👻</div>
-<h3 class="text-2xl font-bold mb-1">Ghost</h3>
-<p class="text-gray-400 text-sm font-semibold
-mb-4">10mg THCP + 10mg D9</p>
-<div class="w-full space-y-2 mb-6 bg-black/20 p-3
-rounded-lg">
-<div class="flex justify-between text-sm"><span
-class="text-gray-400">1 Pieza</span> <span
-class="font-bold">$100</span></div>
-<div class="flex justify-between text-sm"><span
-class="text-gray-300">Promo 2 pz</span> <span class="font-bold
-text-gray-300">$180</span></div>
-</div>
-<button onclick="openModal('Ghost Edibles')"
-class="btn-glow w-full py-3 bg-white text-black font-bold rounded-lg
-hover:bg-gray-100">
-COMPRAR AHORA
-</button>
-</div>
-<!-- Pachetaxo -->
-<div class="product-card glass-panel rounded-2xl p-6 flex
-flex-col items-center text-center relative overflow-hidden group">
-<div class="absolute top-0 w-full h-1
-bg-purple-500"></div>
-<div class="text-6xl mb-4 mt-4
-drop-shadow-lg">🪼</div>
-<h3 class="text-2xl font-bold mb-1">Pachetaxo</h3>
-<p class="text-purple-400 text-sm font-semibold
-mb-4">50mg HHC</p>
-<div class="w-full space-y-2 mb-6 bg-black/20 p-3
-rounded-lg">
-<div class="flex justify-between text-sm"><span
-class="text-gray-400">1 Pieza</span> <span
-class="font-bold">$80</span></div>
-<div class="flex justify-between text-sm"><span
-class="text-purple-300">Promo 2 pz</span> <span class="font-bold
-text-purple-300">$140</span></div>
-</div>
-<button onclick="openModal('Pachetaxo')"
-class="btn-glow w-full py-3 bg-white text-black font-bold rounded-lg
-hover:bg-gray-100">
-COMPRAR AHORA
-</button>
-</div>
-<!-- Pandita FH -->
-<div class="product-card glass-panel rounded-2xl p-6 flex
-flex-col items-center text-center relative overflow-hidden group
-md:col-span-2 lg:col-span-2">
-<div class="absolute top-0 w-full h-1
-bg-red-500"></div>
-<span class="absolute top-3 left-3 text-[10px]
-font-bold bg-orange-500 text-white px-2 py-1 rounded">FAVORITO DE
-TODOS</span>
-<div class="flex flex-col md:flex-row items-center
-md:gap-8">
-<div class="text-center">
-<div class="text-6xl mb-2
-drop-shadow-lg">🧨</div>
-<h3 class="text-2xl font-bold mb-1">Pandita
-FH</h3>
-<p class="text-red-400 text-sm
-font-semibold">35mg THC</p>
-</div>
-<div class="w-full md:w-auto flex-1 mt-4 md:mt-0
-space-y-2 bg-black/20 p-4 rounded-lg">
-<div class="flex justify-between items-center
-text-sm border-b border-white/10 pb-2">
-<span
-class="text-gray-300">Individual</span>
-<span class="font-bold
-text-xl">$70</span>
-</div>
-<div class="flex justify-between items-center
-text-sm pt-1">
-<span class="text-red-300">Promo
-Doble</span>
-<span class="font-bold text-xl
-text-red-300">$120</span>
-</div>
-<button onclick="openModal('Pandita FH')"
-class="btn-glow w-full mt-4 py-3 bg-gradient-to-r from-red-600
-to-orange-600 text-white font-bold rounded-lg">
-COMPRAR AHORA
-</button>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- CONTACT MODAL OVERLAY -->
-<div id="contactModal" class="modal fixed inset-0 z-50 flex
-items-center justify-center px-4 invisible opacity-0">
-<!-- Backdrop -->
-<div onclick="closeModal()" class="absolute inset-0
-bg-black/80 backdrop-blur-sm"></div>
-<!-- Modal Content -->
-<div class="modal-content relative bg-[#111] border
-border-white/20 p-6 md:p-8 rounded-3xl max-w-md w-full shadow-2xl">
-<!-- Close Button -->
-<button onclick="closeModal()" class="absolute top-4
-right-4 text-gray-400 hover:text-white">
-<i class="fa-solid fa-xmark text-xl"></i>
-</button>
-<!-- Header -->
-<div class="text-center mb-6">
-<div class="w-16 h-16 bg-green-500/10 rounded-full
-flex items-center justify-center mx-auto mb-3">
-<i class="fa-brands fa-whatsapp text-3xl
-text-green-500"></i>
-</div>
-<h3 class="text-2xl font-bold text-white">¡Gran
-elección!</h3>
-<p class="text-gray-400 text-sm mt-1">Estás a un paso
-de confirmar tu <span id="modalProduct" class="text-white
-font-bold">producto</span>.</p>
-</div>
-<!-- Contact Info Box -->
-<div class="bg-white/5 rounded-xl p-4 mb-6 border
-border-white/5 space-y-4">
-<div class="flex items-start gap-3">
-<i class="fa-solid fa-phone text-green-400
-mt-1"></i>
-<div>
-<p class="text-xs text-gray-400 uppercase
-font-bold">Haz tu pedido al:</p>
-<p class="text-lg font-mono text-white
-tracking-wider">411 116 7014</p>
-</div>
-</div>
-<div class="h-px bg-white/10"></div>
-<div class="flex items-start gap-3">
-<i class="fa-solid fa-handshake text-blue-400
-mt-1"></i>
-<div>
-<p class="text-xs text-gray-400 uppercase
-font-bold">Entrega Personal:</p>
-<p class="text-sm text-white">Punto Medio a
-convenir</p>
-</div>
-</div>
-<div class="h-px bg-white/10"></div>
-<div class="flex items-start gap-3">
-<i class="fa-solid fa-motorcycle text-orange-400
-mt-1"></i>
-<div>
-<p class="text-xs text-gray-400 uppercase
-font-bold">Envío a Domicilio:</p>
-<p class="text-sm text-white">Únicamente
-clientes frecuentes ⭐</p>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<a id="whatsappLink" href="#" target="
-blank" class="block
-_
-w-full bg-green-600 hover:bg-green-500 text-white font-bold
-text-center py-4 rounded-xl transition-all shadow-lg
-shadow-green-900/40">
-<i class="fa-brands fa-whatsapp mr-2"></i> Mandar
-Mensaje
-</a>
-<p class="text-center text-[10px] text-gray-500 mt-4">Al
-hacer clic se abrirá WhatsApp con tu pedido.</p>
-</div>
-</div>
-<script>
-const modal = document.getElementById('contactModal');
-const modalProductText =
-document.getElementById('modalProduct');
-const whatsappLink = document.getElementById('whatsappLink');
-const phoneNumber = "5214111167014"; // Formato internacional
-para México
-function openModal(productName) {
-// Actualizar texto del producto
-modalProductText.textContent = productName;
-// Actualizar link de WhatsApp
-const message =
-`Hola, me interesa comprar:
-${productName}. Vi el menú digital.
-`
-;
-whatsappLink.href =
-`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
-// Mostrar modal
-modal.classList.remove('invisible'
-modal.classList.add('active');
-,
-'opacity-0');
-;
-}
-function closeModal() {
-modal.classList.remove('active');
-modal.classList.add('invisible'
-,
-'opacity-0');
-}
-// Cerrar con tecla ESC
-document.addEventListener('keydown'
-if (event.key === "Escape") {
-closeModal();
-, function(event) {
-}
-});
-</script>
+
+<body class="min-h-screen p-6">
+
+  <header class="text-center mb-10">
+    <h1 class="text-4xl font-extrabold">🍬 PREMIUM EDIBLES</h1>
+    <p class="text-gray-300 mt-2">Menú interactivo • Entrega discreta</p>
+  </header>
+
+  <main class="grid gap-6 max-w-xl mx-auto">
+
+    <!-- Producto -->
+    <div class="card p-6">
+      <h2 class="text-2xl font-bold">Gomitas THC</h2>
+      <p class="text-gray-300">10 piezas • Alta potencia</p>
+      <p class="text-xl font-bold mt-2">$600 MXN</p>
+      <button onclick="comprar('Gomitas THC')"
+        class="mt-4 w-full bg-green-500 hover:bg-green-600 text-black font-bold py-2 rounded-lg">
+        Comprar
+      </button>
+    </div>
+
+    <div class="card p-6">
+      <h2 class="text-2xl font-bold">Brownie Especial</h2>
+      <p class="text-gray-300">Dosis fuerte</p>
+      <p class="text-xl font-bold mt-2">$350 MXN</p>
+      <button onclick="comprar('Brownie Especial')"
+        class="mt-4 w-full bg-green-500 hover:bg-green-600 text-black font-bold py-2 rounded-lg">
+        Comprar
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="text-center text-gray-400 mt-10 text-sm">
+    Atención solo mayores de edad
+  </footer>
+
+  <script>
+    function comprar(producto) {
+      const numero = "5214111167014"; // TU WHATSAPP
+      const mensaje = encodeURIComponent(
+        "Hola, me interesa el producto: " + producto
+      );
+      window.location.href = "https://wa.me/" + numero + "?text=" + mensaje;
+    }
+  </script>
+
 </body>
 </html>
